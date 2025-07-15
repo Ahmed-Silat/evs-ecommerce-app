@@ -6,7 +6,7 @@ function OrderSuccess() {
   const navigate = useNavigate();
 
   const handleContinueShopping = () => {
-    navigate("/dashboard"); // or "/" depending on your app
+    navigate("/"); // or "/" depending on your app
   };
 
   return (
