@@ -5,13 +5,18 @@ import Row from "react-bootstrap/Row";
 import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa"; // ⭐️ Star icons
 import { products } from "../mockData/Products"; // Adjust path if needed
 import RenderStars from "./RenderStars";
+import { useNavigate } from "react-router";
 
 function ProductCards() {
+  const navigate = useNavigate();
   return (
     <Row xs={1} sm={2} md={3} lg={4} className="g-4 p-3">
       {products.map((product) => (
         <Col key={product.id}>
-          <Card className="h-100 shadow-sm product-card">
+          <Card
+            className="h-100 shadow-sm product-card"
+            onClick={() => navigate(`/product/${product.id}`)}
+          >
             <Card.Img
               variant="top"
               src={product.image}
