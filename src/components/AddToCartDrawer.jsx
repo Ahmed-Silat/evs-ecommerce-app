@@ -1,9 +1,11 @@
 import { Offcanvas, Button, Image, Form } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { closeCart, removeFromCart, updateQuantity } from "../store/cartSlice";
+import { useNavigate } from "react-router";
 
 function AddToCartDrawer() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { cartItems, showCart } = useSelector((state) => state.cart);
 
   const total = cartItems.reduce(
@@ -64,7 +66,14 @@ function AddToCartDrawer() {
             ))}
             <hr />
             <h5>Total: ${total.toFixed(2)}</h5>
-            <Button variant="success" className="w-100 mt-2">
+            <Button
+              variant="success"
+              className="w-100 mt-2"
+              onClick={() => {
+                navigate("/checkout");
+                dispatch(closeCart());
+              }}
+            >
               Checkout
             </Button>
           </>
