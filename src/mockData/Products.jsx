@@ -234,4 +234,15 @@ export const products = [
     rating: 4.3,
     image: "https://icasiostore.pk/wp-content/uploads/2024/05/DQ-750F-7.webp",
   },
+  {
+    id: 21,
+    name: "Digital Alarm Clock",
+    description: "LED display, snooze feature, and adjustable brightness.",
+    price: 22.99,
+    category: "Electronics",
+    brand: "Casio",
+    stock: 38,
+    rating: 4.3,
+    image: "https://icasiostore.pk/wp-content/uploads/2024/05/DQ-750F-7.webp",
+  },
 ];
