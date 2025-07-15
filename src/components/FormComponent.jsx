@@ -1,10 +1,7 @@
 import { Card, Form } from "react-bootstrap";
 import InputFields from "./InputFields";
-import { useState } from "react";
 
-function FormComponent({ title, inputs, onSubmit, error }) {
-  const [formData, setFormData] = useState({});
-
+function FormComponent({ title, inputs, formData, setFormData, error }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -15,7 +12,6 @@ function FormComponent({ title, inputs, onSubmit, error }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
   };
 
   return (

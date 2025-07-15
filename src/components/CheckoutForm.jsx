@@ -1,7 +1,7 @@
 // src/components/CheckoutForm.jsx
 import FormComponent from "./FormComponent";
 
-function CheckoutForm({ onSubmit, error }) {
+function CheckoutForm({ formData, setFormData, error }) {
   const formInputs = [
     {
       label: "Full Name",
@@ -44,7 +44,8 @@ function CheckoutForm({ onSubmit, error }) {
     <FormComponent
       title="Checkout"
       inputs={formInputs}
-      onSubmit={onSubmit}
+      formData={formData}
+      setFormData={setFormData}
       error={error}
     />
   );
