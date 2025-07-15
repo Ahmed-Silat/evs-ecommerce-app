@@ -7,9 +7,12 @@ import CheckoutForm from "../components/CheckoutForm";
 import CheckoutCartSummary from "../components/CheckoutCartSummary";
 import PaymentMethod from "../components/PaymentMethod";
 import CustomButton from "../components/CustomButton";
+import { useDispatch } from "react-redux";
+import { clearCart } from "../store/cartSlice";
 
 function Checkout() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({});
   const [paymentMethod, setPaymentMethod] = useState("");
@@ -21,6 +24,13 @@ function Checkout() {
   };
 
   const handleOrderConfirmation = (data = formData) => {
+    console.log("Full Name:", data.fullName);
+    console.log("Email:", data.email);
+    console.log("Address:", data.address);
+    console.log("City:", data.city);
+    console.log("ZIP Code:", data.zip);
+    console.log("Payment Method:", paymentMethod);
+
     if (
       !data.fullName ||
       !data.email ||
@@ -37,8 +47,8 @@ function Checkout() {
       return;
     }
 
-    console.log("Order Placed:", { ...data, paymentMethod });
-    alert("Order placed successfully!");
+    dispatch(clearCart());
+
     navigate("/order-success");
   };
 

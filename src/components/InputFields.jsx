@@ -14,8 +14,8 @@ function InputFields({
 }) {
   const [show, setShow] = useState(false);
 
-  console.log("InputFields rendered with value:", value);
-  console.log(onChange);
+  // console.log("InputFields rendered with value:", value);
+  // console.log(onChange);
 
   return (
     <Form.Group controlId={name} className="mb-3">
