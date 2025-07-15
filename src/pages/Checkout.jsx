@@ -14,14 +14,15 @@ function Checkout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState("");
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    address: "",
+    city: "",
+    zip: "",
+  });
   const [paymentMethod, setPaymentMethod] = useState("");
   //   const { cartItems } = useSelector((state) => state.cart);
-
-  const handleFormSubmit = (data) => {
-    setFormData(data); // optional, in case you still want to save it
-    handleOrderConfirmation(data); // pass the submitted form data directly
-  };
 
   const handleOrderConfirmation = (data = formData) => {
     console.log("Full Name:", data.fullName);
@@ -59,7 +60,11 @@ function Checkout() {
           {/* Left Side: Form + Payment */}
           <Col md={6}>
             <div className="mb-4">
-              <CheckoutForm onSubmit={handleFormSubmit} error={error} />
+              <CheckoutForm
+                formData={formData}
+                setFormData={setFormData}
+                error={error}
+              />
             </div>
             <PaymentMethod
               selectedMethod={paymentMethod}
@@ -68,7 +73,7 @@ function Checkout() {
             <div className="d-grid">
               <CustomButton
                 text="Confirm Order"
-                onClick={handleOrderConfirmation}
+                onClick={() => handleOrderConfirmation(formData)}
               />
             </div>
           </Col>
