@@ -1,8 +1,22 @@
+// src/components/CustomButton.jsx
 import { Button } from "react-bootstrap";
 
-function CustomButton({ type = "submit", text, variant = "primary", size = "lg" }) {
+function CustomButton({
+  text,
+  onClick,
+  className = "",
+  variant = "primary",
+  size = "lg",
+  ...rest
+}) {
   return (
-    <Button type={type} variant={variant} size={size} className="w-100">
+    <Button
+      variant={variant}
+      size={size}
+      className={`rounded-3 ${className}`}
+      onClick={onClick}
+      {...rest}
+    >
       {text}
     </Button>
   );
