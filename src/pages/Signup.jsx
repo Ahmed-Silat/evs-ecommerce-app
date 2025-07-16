@@ -5,6 +5,45 @@ import FormComponent from "../components/FormComponent";
 
 function Signup() {
   const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    password: "",
+    confPassword: "",
+  });
+
+  const formInputs = [
+    {
+      label: "Full Name",
+      name: "fullName",
+      type: "text",
+      placeholder: "Enter your full name",
+      required: true,
+    },
+    {
+      label: "Email",
+      name: "email",
+      type: "email",
+      placeholder: "Enter your email",
+      required: true,
+    },
+    {
+      label: "Password",
+      name: "password",
+      type: "password",
+      placeholder: "Enter your password",
+      required: true,
+      showToggle: true,
+    },
+    {
+      label: "Confirm Password",
+      name: "confirmPassword",
+      type: "password",
+      placeholder: "Re-enter your password",
+      required: true,
+      showToggle: true,
+    },
+  ];
 
   const handleSignup = (data) => {
     const { password, confirmPassword } = data;
@@ -26,39 +65,10 @@ function Signup() {
           <Col xs={12} sm={10} md={8} lg={6} xl={5}>
             <FormComponent
               title="Create Your Account"
-              inputs={[
-                {
-                  label: "Full Name",
-                  name: "fullName",
-                  type: "text",
-                  placeholder: "Enter your full name",
-                  required: true,
-                },
-                {
-                  label: "Email",
-                  name: "email",
-                  type: "email",
-                  placeholder: "Enter your email",
-                  required: true,
-                },
-                {
-                  label: "Password",
-                  name: "password",
-                  type: "password",
-                  placeholder: "Enter your password",
-                  required: true,
-                  showToggle: true,
-                },
-                {
-                  label: "Confirm Password",
-                  name: "confirmPassword",
-                  type: "password",
-                  placeholder: "Re-enter your password",
-                  required: true,
-                  showToggle: true,
-                },
-              ]}
               buttonText="Sign Up"
+              inputs={formInputs}
+              formData={formData}
+              setFormData={setFormData}
               onSubmit={handleSignup}
               error={error} // ✅ Pass error to FormComponent
               footer={

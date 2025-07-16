@@ -1,7 +1,16 @@
 import { Card, Form } from "react-bootstrap";
 import InputFields from "./InputFields";
+import CustomButton from "./CustomButton";
 
-function FormComponent({ title, inputs, formData, setFormData, error }) {
+function FormComponent({
+  title,
+  inputs,
+  formData,
+  setFormData,
+  error,
+  footer,
+  buttonText,
+}) {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -13,6 +22,8 @@ function FormComponent({ title, inputs, formData, setFormData, error }) {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  console.log(inputs);
 
   return (
     <Card className="shadow-lg border-0 rounded-4 p-4">
@@ -29,6 +40,14 @@ function FormComponent({ title, inputs, formData, setFormData, error }) {
             onChange={handleChange}
           />
         ))}
+
+        {buttonText && (
+          <div className="mt-3 d-grid">
+            <CustomButton type="submit" text={buttonText} />
+          </div>
+        )}
+
+        {footer && <div className="mt-3 text-center">{footer}</div>}
       </Form>
     </Card>
   );
